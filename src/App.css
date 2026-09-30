@@ -1,0 +1,342 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: #f0f9ff; /* Biru langit sangat muda */
+  color: #0f172a;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1050px;
+  margin: 40px auto;
+  padding: 0 20px;
+  position: relative;
+}
+
+/* ================= TOAST NOTIFICATION ANIMATION ================= */
+.toast-notification {
+  position: fixed;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #0284c7;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 50px;
+  font-weight: 500;
+  box-shadow: 0 10px 15px -3px rgba(2, 132, 199, 0.4);
+  transition: top 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  z-index: 1000;
+}
+
+.toast-notification.show {
+  top: 30px;
+}
+
+/* ================= HEADER ================= */
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.title-animate {
+  color: #0369a1;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  animation: fadeInDown 0.8s ease-out;
+}
+
+.stats-bar {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 25px;
+  animation: fadeIn 1s ease-out 0.3s both;
+}
+
+.stats-bar span {
+  background: #e0f2fe;
+  color: #0284c7;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  border: 1px solid #bae6fd;
+}
+
+.search-bar input {
+  width: 100%;
+  max-width: 550px;
+  padding: 12px 22px;
+  border-radius: 30px;
+  border: 2px solid #bae6fd;
+  background-color: #ffffff;
+  color: #0f172a;
+  font-size: 15px;
+  box-shadow: 0 4px 10px rgba(56, 189, 248, 0.15);
+  transition: all 0.3s ease;
+  animation: fadeIn 1s ease-out 0.5s both;
+}
+
+.search-bar input:focus {
+  outline: none;
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.25);
+  transform: translateY(-2px);
+}
+
+/* ================= LAYOUT ================= */
+.main-content {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 30px;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ================= FORM CARD ================= */
+.form-card {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(2, 132, 199, 0.08);
+  border: 1px solid #e0f2fe;
+}
+
+.form-card h3 {
+  margin-bottom: 20px;
+  color: #0369a1;
+  border-bottom: 2px dashed #bae6fd;
+  padding-bottom: 12px;
+}
+
+.form-group {
+  margin-bottom: 18px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #475569;
+  margin-bottom: 8px;
+}
+
+.form-group input, .form-group select {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 2px solid #e2e8f0;
+  background-color: #f8fafc;
+  color: #0f172a;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+/* Perbaikan warna dropdown */
+.form-group select option, .filter-bar select option {
+  color: #0f172a;
+  background-color: #ffffff;
+}
+
+.form-group input:focus, .form-group select:focus {
+  outline: none;
+  border-color: #38bdf8;
+  background-color: #ffffff;
+}
+
+.btn-add {
+  width: 100%;
+  background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 15px;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+}
+
+.btn-add:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(14, 165, 233, 0.4);
+}
+
+.btn-add.loading {
+  background: #94a3b8;
+  box-shadow: none;
+  transform: none;
+  cursor: not-allowed;
+}
+
+/* ================= LIST CONTAINER ================= */
+.list-container {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(2, 132, 199, 0.08);
+  border: 1px solid #e0f2fe;
+}
+
+.filter-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 2px dashed #bae6fd;
+  padding-bottom: 15px;
+}
+
+.filter-bar h3 {
+  color: #0369a1;
+}
+
+.filter-bar select {
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: 2px solid #e2e8f0;
+  color: #7ca3ff;
+  font-weight: 500;
+}
+
+.song-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ================= SONG CARD & ANIMATIONS ================= */
+.song-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid #f1f5f9;
+  background-color: #ffffff;
+  padding: 18px 20px;
+  border-radius: 14px;
+  transition: all 0.3s ease;
+}
+
+.song-card:hover {
+  border-color: #bae6fd;
+  box-shadow: 0 8px 20px rgba(56, 189, 248, 0.15);
+  transform: scale(1.01);
+}
+
+.song-card.favorite-active {
+  border-left: 6px solid #f59e0b;
+  background-color: #fffbeb;
+  border-top-color: #fef3c7;
+  border-right-color: #fef3c7;
+  border-bottom-color: #fef3c7;
+}
+
+.song-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.song-artist {
+  font-size: 0.9rem;
+  color: #64748b;
+  margin: 4px 0 8px;
+}
+
+.genre-badge {
+  background: #e0f2fe;
+  color: #0284c7;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.card-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-fav, .btn-delete {
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 2px solid transparent;
+}
+
+.btn-fav {
+  background: #f1f5f9;
+  color: #475569;
+}
+
+.btn-fav:hover {
+  background: #e2e8f0;
+}
+
+.favorite-active .btn-fav {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.btn-delete {
+  background: #fef2f2;
+  color: #ef4444;
+}
+
+.btn-delete:hover {
+  background: #fee2e2;
+  border-color: #fca5a5;
+}
+
+.empty-state {
+  text-align: center;
+  color: #94a3b8;
+  padding: 40px 0;
+  font-weight: 500;
+}
+
+/* ================= KEYFRAMES ANIMATIONS ================= */
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out both;
+}
+
+.animate-slide-up {
+  opacity: 0;
+  animation: slideUpFade 0.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUpFade {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
